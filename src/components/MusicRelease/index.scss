@@ -1,6 +1,6 @@
 .card {
     border: none;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 
     .card-item {
         border: 1px solid rgb(231, 231, 231);
@@ -22,25 +22,34 @@
             }
         }
 
-        img {
+        // Make image height same as width
+        .img-container {
+            position: relative;
             width: 100%;
-            min-height: 210px;
 
-            @media (max-width: 1200px) {
-                min-height: 210px;
+            &::after {
+                content: "";
+                display: block;
+                padding-bottom: 100%;
             }
-            @media (max-width: 991px) {
-                min-height: 210px;
-            }
-            @media (max-width: 767px) {
-                min-height: 160px;
+
+            img {
+                bottom: 0;
+                height: 100%;
+                left: 0;
+                object-fit: cover;
+                object-position: center;
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 100%;
             }
         }
 
         .card-info {
             display: flex;
-            height: 100%;
             flex-direction: column;
+            height: 100%;
             justify-content: space-between;
             line-height: 1.1;
             padding: 10px;
@@ -50,13 +59,16 @@
                 font-size: 1rem;
                 font-weight: 600;
                 margin-bottom: 10px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
 
             .card-details{
-                display: flex;
-                justify-content: space-between;
-                font-size: 0.8rem;
                 color: dimgray;
+                display: flex;
+                font-size: 0.8rem;
+                justify-content: space-between;
             }
         }
         

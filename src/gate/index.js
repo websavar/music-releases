@@ -13,9 +13,9 @@ const errorHandler = (err) => {
 }
 
 const discogs = {
-    fetchDicogs: async () => {
+    fetchDicogs: async (q) => {
         const result = await authAxios
-            .get('search?token=' + accessToken + '&q=' + '*')
+            .get('search?token=' + accessToken + '&q=' + q)
             .catch(error => errorHandler(error));
 
         return result?.data.results;
