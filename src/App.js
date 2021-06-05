@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+
+import gate from './gate';
+import './App.scss';
+import MusicRelease from "./components/MusicRelease";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const discogsList = await gate.fetchDicogs();
+            setData(discogsList);
+        };
+
+        fetchData();
+    }, []);
+
+    return (
+        <div className="App">
+            <div className="container">
+                <div className="row">
+                    {data.map((item) => <MusicRelease item={item} key={item.id} />)}
+                </div>
+            </div>
+        </div >
+    );
 }
 
 export default App;
