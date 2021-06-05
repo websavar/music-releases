@@ -1,0 +1,75 @@
+@import '../../global.scss';
+
+.loading-spinner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    span {
+        animation: loadingspin 1s linear infinite;
+        border: 0.2em solid transparent;
+        border-color: $gray2;
+        border-radius: 50%;
+        border-top-color: $loading-color;
+        height: $spinner-size;
+        margin: 10px;
+        pointer-events: none;
+        width: $spinner-size;
+    }
+
+    &.margin-left {
+        margin-left: $header-width;
+        
+        @media (max-width: 1199px) {
+            margin-left: 0;
+        }
+    }
+}
+
+.loading-gradient {
+    width: 20%;
+    
+    span {
+        margin: 15px;
+        animation-duration: 1.25s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+        background: $loading-gradient-bg-color;
+        background: linear-gradient(to right, #eee 10%, #ddd 18%, #eee 33%);
+        background-size: 800px 104px;
+        border-radius: 3px;
+        height: $loading-gradient-height;
+        width: $loading-gradient-width;
+    }
+
+    @media (max-width: 1200px) {
+        width: 25%;
+    }
+    @media (max-width: 991px) {
+        width: 33.3333333%;
+    }
+    @media (max-width: 767px) {
+        width: 50%;
+    }
+    @media (max-width: 380px) {
+        width: 100%;
+    }
+}
+
+@keyframes loadingspin {
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes placeHolderShimmer {
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+

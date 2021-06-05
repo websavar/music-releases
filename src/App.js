@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 
 import gate from './gate';
 import './App.scss';
-import MusicRelease from "./components/MusicRelease";
+import Loader from "./components/Loader";
+// import MusicRelease from "./components/MusicRelease";
+
+const MusicRelease = React.lazy(() => import('./components/MusicRelease'))
 
 function App() {
     const [data, setData] = useState([]);
@@ -20,7 +23,14 @@ function App() {
         <div className="App">
             <div className="container">
                 <div className="row">
-                    {data.map((item) => <MusicRelease item={item} key={item.id} />)}
+                    {data.map((item) => {
+                        return (
+                            <Suspense fallback={<Loader type="gradient" />} key={item.id}>
+                                <MusicRelease item={item} />
+                            </Suspense>
+                        )
+                    })
+                    }
                 </div>
             </div>
         </div >
