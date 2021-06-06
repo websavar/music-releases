@@ -1,0 +1,40 @@
+@import '../../global.scss';
+
+.pagination {
+	margin-top: 0;
+	margin-bottom: 0;
+
+    .page-item {
+        margin: 0 1.2px;
+    }
+
+    li.page-item.active a.page-link {
+        color: $dark-blue3;
+        background-color: $gray2;
+        border-color: $light-blue1;
+    }
+
+    a.page-link {
+        border-color: $gray3;
+        box-shadow: none;
+        color: $light-blue3;
+        font-size: 0.8rem;
+        font-weight: 600;
+        min-width: 3.3rem;
+        padding: 0.8rem;
+        text-align: center;
+
+        &:focus {
+            background-color: white;
+        }
+
+        &:hover {
+            background-color: $gray1;
+        }
+
+        @media (max-width: 450px) {
+            min-width:fit-content;
+            padding: .6rem .8rem;
+        }
+    }
+}

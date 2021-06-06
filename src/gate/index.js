@@ -13,12 +13,12 @@ const errorHandler = (err) => {
 }
 
 const discogs = {
-    fetchDicogs: async (q) => {
+    fetchDicogs: async (query = "*", currentPage = 1, pageLimit = 50) => {
         const result = await authAxios
-            .get('search?token=' + accessToken + '&q=' + q)
+            .get('search?token=' + accessToken + '&q=' + query + '&page=' + currentPage + '&per_page=' + pageLimit)
             .catch(error => errorHandler(error));
 
-        return result?.data.results;
+        return result?.data;
     }
 };
 

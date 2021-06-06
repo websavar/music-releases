@@ -6,7 +6,7 @@ const MusicRelease = (props) => {
     return (
         <div className="col-lg-3 col-md-4 col-sm-6 col-12 align-items-stretch justify-content-end card">
             <div className="card-item">
-                <div class="img-container">
+                <div className="img-container">
                     <img src={item.thumb ? item.cover_image : "./default-bg.png"} alt={item.title} />
                 </div>
                 <div className="card-info">

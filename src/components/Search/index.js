@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./index.scss";
 import gate from '../../gate';
 
@@ -6,12 +6,12 @@ const Search = props => {
 
     const [list, setList] = useState([]);
 
-    const fetchData = async (q) => {
-        const discogsList = await gate.fetchDicogs(q);
-        setList(discogsList);
+    const fetchData = async (query) => {
+        const discogsList = await gate.fetchDicogs(query);
+        setList(discogsList?.results);
     };
 
-    var currentFocus = 0;
+    var currentFocus = -1;
 
     const onChangeHandler = (e) => {
         const input = e.target;
@@ -54,7 +54,8 @@ const Search = props => {
             addActive(items);
         } else if (e.keyCode === 13) { // Enter
             e.preventDefault();
-            if (currentFocus > 0 && items) items[currentFocus].click();
+            if (currentFocus > -1 && items) items[currentFocus].click();
+            closeAllLists();
             sendSearchValue();
         }
     };

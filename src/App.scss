@@ -4,3 +4,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+}
