@@ -1,0 +1,15 @@
+@import '../../global.scss';
+
+.footer {
+    background: $footer-bg-color;
+    border-top: 1px solid $gray2;
+    bottom: 0;
+    color: $gray3;
+    font-size: .8rem;
+    font-weight: 600;
+    padding: 1rem 0;
+    position: absolute;
+    text-align: center;    
+    width: 100%;
+    z-index: 1;
+}

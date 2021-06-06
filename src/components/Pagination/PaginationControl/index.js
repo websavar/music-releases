@@ -13,7 +13,7 @@ const PaginationControl = (props) => {
                 id="limit_bottom"
                 name="limit"
                 onChange={pageLimitClicked}
-                defaultValue={props.defaultValue}
+                value={props.defaultValue}
             >
                 <option value="25">25</option>
                 <option value="50">50</option>

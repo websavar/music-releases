@@ -7,11 +7,12 @@
     text-align: right;
     
     #limit_bottom {
+        border-color: $gray4;
         border-radius: 3px;
         color: $gray5;
+        height: 1.6rem;
         outline: none;
         width: 4rem;
-
     }
 
     @media (max-width: 500px) {

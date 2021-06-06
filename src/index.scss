@@ -1,0 +1,21 @@
+@import './global.scss';
+
+html {
+    font-size: 16px;
+    min-height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body {
+    font-size: 1rem;
+    font-family: 'Segoe UI', 'Roboto', sans-serif, Tahoma;
+    margin: 0;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    margin: 20px 0 70px;
+}

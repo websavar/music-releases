@@ -11,17 +11,17 @@
     li.page-item.active a.page-link {
         color: $dark-blue3;
         background-color: $gray2;
-        border-color: $light-blue1;
+        border-color: $light-blue2;
     }
 
     a.page-link {
-        border-color: $gray3;
+        border-color: $ligth-purple;
         box-shadow: none;
-        color: $light-blue3;
+        color: $gray4;
         font-size: 0.8rem;
         font-weight: 600;
         min-width: 3.3rem;
-        padding: 0.8rem;
+        padding: .6rem .8rem;
         text-align: center;
 
         &:focus {
@@ -30,6 +30,7 @@
 
         &:hover {
             background-color: $gray1;
+            color: $light-blue4;
         }
 
         @media (max-width: 450px) {
