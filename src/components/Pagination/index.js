@@ -104,7 +104,6 @@ const Pagination = (props) => {
         return range(1, totalPages);
     };
 
-
     if (!totalRecords) return null;
 
     if (totalPages === 1) return null;
@@ -113,7 +112,7 @@ const Pagination = (props) => {
 
     return (
         <>
-            <nav aria-label="Pagination col-12 col-sm-10 col-md-8">
+            <nav aria-label="Pagination" className="col-12 col-sm-10 col-md-8">
                 <ul className="pagination">
                     {pages.map((page, index) => {
                         if (page === LEFT_PAGE)
@@ -124,12 +123,8 @@ const Pagination = (props) => {
                                         aria-label="Previous"
                                         onClick={handleMoveLeft}
                                     >
-                                        <span aria-hidden="true">
-                                            ...
-                                            </span>
-                                        <span className="sr-only">
-                                            Previous
-                                            </span>
+                                        <span aria-hidden="true">...</span>
+                                        <span className="sr-only">Previous</span>
                                     </Link>
                                 </li>
                             );

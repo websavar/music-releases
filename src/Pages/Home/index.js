@@ -28,9 +28,13 @@ const Home = () => {
         fetchData();
     }, []);
 
-    const pageLimitHandler = (pageLimit) => {
-        setPageLimit(pageLimit);
-        fetchData(searchQuery, currentPage, pageLimit);
+    const pageLimitHandler = async (pageLimit) => {
+        let getCurrentPage = currentPage;
+        const lastPage = Math.ceil(pagination.items / pageLimit);
+        if (currentPage > lastPage) getCurrentPage = lastPage;
+
+        await setPageLimit(pageLimit);
+        fetchData(searchQuery, getCurrentPage, pageLimit);
     }
 
     const searchClicked = async (val) => {
@@ -39,11 +43,12 @@ const Home = () => {
         fetchData(val, 1);
     }
 
-    const pageHandler = (p) => {
+    const paginationHandler = (p) => {
         fetchData(searchQuery, p.currentPage, p.pageLimit);
     }
 
     if (loading) return <Loader type="spinner" />;
+
     return (
         <main>
             <div className="container">
@@ -58,13 +63,13 @@ const Home = () => {
                                 pageLimit={pageLimit}
                                 pageNeighbours={1}
                                 currentPage={currentPage}
-                                onPageChanged={pageHandler}
+                                onPageChanged={paginationHandler}
                             />
                             <PaginationControl onPageLimitChange={pageLimitHandler} defaultValue={pagination?.per_page} />
                         </div>
 
                         <div className="row">
-                            {data.length === 0 ? <div>Nothing found! Please try a different search</div> :
+                            {data.length === 0 ? <p>Nothing found! Please try a different search</p> :
                                 data.map((item) => {
                                     return (
                                         <Suspense fallback={<Loader type="gradient" />} key={item.id}>
@@ -81,12 +86,12 @@ const Home = () => {
                                 pageLimit={pageLimit}
                                 pageNeighbours={1}
                                 currentPage={currentPage}
-                                onPageChanged={pageHandler}
+                                onPageChanged={paginationHandler}
                             />
                             <PaginationControl onPageLimitChange={pageLimitHandler} defaultValue={pageLimit} />
                         </div>
                     </>
-                    : <div className="d-flex justify-content-center">Request failed!</div>
+                    : <p className="d-flex justify-content-center">Request failed!</p>
                 }
             </div>
         </main >

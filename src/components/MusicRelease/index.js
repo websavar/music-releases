@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
-import Loader from '../Loader';
 import './index.scss';
-// import MusicImage from './MusicImage';
+import Loader from '../Loader';
 
 const MusicImage = React.lazy(() => import('./MusicImage'));
 
@@ -11,19 +10,16 @@ const MusicRelease = (props) => {
     return (
         <div className="col-lg-3 col-md-4 col-sm-6 col-12 align-items-stretch justify-content-end card">
             <div className="card-item">
-                {/* <div className="img-container">
-                    <img src={item.cover_image ? item.cover_image : "./default-bg.png"} alt={item.title} />
-                </div> */}
                 <Suspense fallback={<Loader type="dots" />}>
                     <MusicImage item={item} />
                 </Suspense>
                 <div className="card-info">
-                    <div className="card-title">
+                    <h4 className="card-title">
                         {item.title.split('-')[0]}
-                    </div>
+                    </h4>
                     <div className="card-details">
-                        <div>{item.type}</div>
-                        <div>{item.country}</div>
+                        <h6>{item.type}</h6>
+                        <h6>{item.country}</h6>
                     </div>
                 </div>
             </div>

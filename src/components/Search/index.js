@@ -11,33 +11,38 @@ const Search = props => {
         setList(discogsList?.results);
     };
 
-    var currentFocus = -1;
+    let currentFocus = -1;
 
     const onChangeHandler = (e) => {
         const input = e.target;
-        let val = input.value;
-        let divList, divItem;
+        const val = input.value;
+        let divItem, imgItem;
         fetchData(val);
 
         closeAllLists();
         if (!val) return false;
         currentFocus = -1;
-        divList = document.createElement("DIV");
+        const divList = document.createElement("DIV");
         divList.setAttribute("id", input.id + "-autocomplete-list");
         divList.setAttribute("class", "autocomplete-items");
         divList.addEventListener("click", sendSearchValue);
         input.parentNode.appendChild(divList);
         let count = 0;
-        for (let item of list) {
+
+        if (list === undefined) return;
+        for (const item of list) {
             if (item.title.substr(0, val.length).toLowerCase() === val.toLowerCase()) {
                 count++;
                 divItem = document.createElement("DIV");
+                imgItem = document.createElement("img");
+                imgItem.src = item.thumb ? item.cover_image : "./default-bg.png";
                 divItem.innerHTML = "<strong>" + item.title.substr(0, val.length) + "</strong>";
                 divItem.innerHTML += item.title.substr(val.length);
                 divItem.addEventListener("click", () => {
                     input.value = item.title;
                     closeAllLists();
                 });
+                divItem.appendChild(imgItem);
                 if (count < 10) divList.appendChild(divItem);
             }
         }
@@ -69,12 +74,12 @@ const Search = props => {
     }
 
     const removeActive = (items) => {
-        for (let item of items) item.classList.remove("autocomplete-active");
+        for (const item of items) item.classList.remove("autocomplete-active");
     }
 
     const closeAllLists = () => {
         const items = document.getElementsByClassName("autocomplete-items");
-        for (let item of items) item.parentNode.removeChild(item);
+        for (const item of items) item.parentNode.removeChild(item);
     }
 
     document.addEventListener("click", e => closeAllLists(e.target));
@@ -85,13 +90,14 @@ const Search = props => {
     }
 
     return (
-        <form className="filter form-row col-lg-5 col-md-8 col-12">
+        <form className="col-lg-5 col-md-8 col-12 form-row filter">
             <div className="form-group">
                 <input
+                    name="search"
                     autoComplete="off"
                     type="search"
-                    className="form-control"
                     id="search"
+                    className="form-control"
                     placeholder="Search ..."
                     onChange={onChangeHandler}
                     onKeyDown={onkeyDownHandler}>
@@ -103,6 +109,7 @@ const Search = props => {
                     type="button"
                     className="btn btn-outline-secondary btn-block"
                     id="btn-search"
+                    data-message="Search for specific terms of releases"
                     onClick={sendSearchValue}
                 >
                     <i className="fas fa-search"></i>

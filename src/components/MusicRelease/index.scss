@@ -25,30 +25,6 @@
             }
         }
 
-        // Make image height same as width
-        .img-container {
-            position: relative;
-            width: 100%;
-
-            &::after {
-                content: "";
-                display: block;
-                padding-bottom: 100%;
-            }
-
-            img {
-                bottom: 0;
-                height: 100%;
-                left: 0;
-                object-fit: cover;
-                object-position: center;
-                position: absolute;
-                right: 0;
-                top: 0;
-                width: 100%;
-            }
-        }
-
         .card-info {
             display: flex;
             flex-direction: column;
@@ -68,10 +44,13 @@
             }
 
             .card-details {
-                color: dimgray;
                 display: flex;
-                font-size: 0.8rem;
                 justify-content: space-between;
+
+                h6 {
+                    color: dimgray;
+                    font-size: 0.8rem;
+                }
             }
         }
         

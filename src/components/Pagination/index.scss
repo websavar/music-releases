@@ -1,17 +1,17 @@
 @import '../../global.scss';
 
 .pagination {
-	margin-top: 0;
 	margin-bottom: 0;
+	margin-top: 0;
 
     .page-item {
         margin: 0 1.2px;
     }
 
     li.page-item.active a.page-link {
-        color: $dark-blue3;
         background-color: $gray2;
         border-color: $light-blue2;
+        color: $dark-blue3;
     }
 
     a.page-link {
@@ -34,7 +34,7 @@
         }
 
         @media (max-width: 450px) {
-            min-width:fit-content;
+            min-width: fit-content;
             padding: .6rem .8rem;
         }
     }
