@@ -19,7 +19,7 @@ const range = (from, to, step = 1) => {
 
 const Pagination = (props) => {
     const [currentPage, setCurentPage] = useState(1);
-    const totalRecords = props.totalRecords;
+    const totalRecords = Math.min(10000, props.totalRecords);
     const pageNeighbours = Math.max(0, Math.min(props.pageNeighbours, 2));
     const totalPages = Math.ceil(totalRecords / props.pageLimit);
 
@@ -123,7 +123,7 @@ const Pagination = (props) => {
                                         aria-label="Previous"
                                         onClick={handleMoveLeft}
                                     >
-                                        <span aria-hidden="true">...</span>
+                                        <span aria-hidden="true"><i className="fas fa-angle-double-left"></i></span>
                                         <span className="sr-only">Previous</span>
                                     </Link>
                                 </li>
@@ -137,7 +137,7 @@ const Pagination = (props) => {
                                         aria-label="Next"
                                         onClick={handleMoveRight}
                                     >
-                                        <span aria-hidden="true">...</span>
+                                        <span aria-hidden="true"><i className="fas fa-angle-double-right"></i></span>
                                         <span className="sr-only">Next</span>
                                     </Link>
                                 </li>

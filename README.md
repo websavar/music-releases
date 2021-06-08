@@ -39,6 +39,8 @@ to achieve this (you’ll need to sign up for a developer token).
 - Discogs API (see in particular the sections on Authentication and Search):
 https://www.discogs.com/developers
 - API token generation (requires account): https://www.discogs.com/settings/developers
+- The number of search results is limited to 10,000.
+Therefoe, pagination is considered based of this value.
 
 <a name="#setup-run"></a>
 ## Setup and run
